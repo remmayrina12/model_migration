@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Carbon\Carbon;
 class Student extends Model
 {
     use HasFactory;
@@ -22,10 +22,18 @@ class Student extends Model
         'birthdate',
     ];
 
-    protected $appends = ['fullname'];
+    protected $appends = ['fullname','birthday'];
     public function getFullnameAttribute()
     {
         return $this->fname . ' ' . $this->lname;
+    }
+    public function getBirthdayAttribute()
+    {
+        $birthdate = $this->attributes['birthdate'];
+        if($birthdate){
+            return Carbon::parse($birthdate)->format('F d, Y');
+        }
+        return '';
     }
     
     public function grades() 
