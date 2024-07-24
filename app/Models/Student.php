@@ -11,14 +11,14 @@ class Student extends Model
 
     protected $table = "students";
     protected $fillable = [
-        'fname',
-        'lname',
+        'id',
+        'name',
         'email',
-        'phone',
-        'address',
-        'city',
-        'province',
-        'zip',
+        'email_verified_at',
+        'password',
+        'remember_token',
+        'created_at',
+        'updated_at',
         'birthdate',
     ];
 

@@ -13,40 +13,42 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //return Student::all();
+        return Student::all();
 
-        //return Student::where('province', 'Louisiana')->get();
+        // return Student::latest();
 
-        //return Student::where('province', 'Louisiana' )
-            //->where('fname', 'Ashlee')
-            //->get();
+        // return Student::where('province', 'Louisiana')->get();
 
-        //return Student::where('province', 'Louisiana' )
+        // return Student::where('province', 'Louisiana' )
+        //     ->where('fname', 'Ashlee')
+        //     ->get();
+
+        // return Student::where('province', 'Louisiana' )
         //    ->orwhere('province', 'Washington')
         //    ->orwhere('fname', 'Alvera')
         //    ->orwhere('lname', 'Murphy')
         //    ->get();
 
-        //return Student::where('fname', 'like', '%t%')->get();
+        // return Student::where('fname', 'like', '%t%')->get();
 
-        //return Student::orderBy('fname')->get();
+        // return Student::orderBy('fname')->get();
 
-        //return Student::orderBy('city', 'desc')->get();
+        // return Student::orderBy('city', 'desc')->get();
 
-        //return Student::limit(7)->get();
+        // return Student::limit(7)->get();
 
-        //return Student::whereIn('id',[1,3,5,7,9,11])->get();
+        // return Student::whereIn('id',[1,3,5,7,9,11])->get();
         
-        //return Student::whereNotIn('id',[1,3,5,7,9,11])->get();
+        // return Student::whereNotIn('id',[1,3,5,7,9,11])->get();
 
-        //return Student::where('province', 'Louisiana')->first();
+        // return Student::where('province', 'Louisiana')->first();
 
         // return Student::with('grades')->get();
 
-        return Student::with(['grades' => function($query){
-            return $query->where('grade', '>=', 90);
+        // return Student::with(['grades' => function($query){
+        //     return $query->where('grade', '>=', 90);
             
-        }])->get();
+        // }])->get();
         
     }
 
@@ -63,7 +65,17 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $student = new Student();
+        // $student->fname     = $request['fname'];
+        // $student->lname     = $request['lname'];
+        // $student->email     = $request['email'];
+        // $student->phone     = $request['phone'];
+        // $student->address   = $request['address'];
+        // $student->city      = $request['city'];
+        // $student->province  = $request['province'];
+        // $student->zip       = $request['zip'];
+        // $student->birthdate = $request['birthdate'];
+        // $student->save();
     }
 
     /**
@@ -94,7 +106,17 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $student = Student::find($id);
+        $student->fname     = $request['fname'];
+        $student->lname     = $request['lname'];
+        $student->email     = $request['email'];
+        $student->phone     = $request['phone'];
+        $student->address   = $request['address'];
+        $student->city      = $request['city'];
+        $student->province  = $request['province'];
+        $student->zip       = $request['zip'];
+        $student->birthdate = $request['birthdate'];
+        $student->save();
     }
 
     /**
@@ -102,7 +124,8 @@ class StudentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $student = Student::find($id);
+        $student->delete();
     }
 
     public function grades()
