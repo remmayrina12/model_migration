@@ -11,12 +11,12 @@
         <div class="container my-5">
             <div class="row">
                 <div class="col-md-6 mx-auto d-grip gap-2">
-                <form action="{{ url('students'), $student->id }}" method="POST">
+                <form action="{{ url('students', $Student->id) }}" method="POST">
         @csrf
         @method="PUT"
         <div>
         <label class="form-label">First Name</label>
-        <input type="text" name="fname" class="form-control" value="{{ $student->fname }}">
+        <input type="text" name="fname" class="form-control" value="{{ $Student->fname }}">
         </div>
 
         <div class="form-group mb-3">
